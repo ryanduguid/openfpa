@@ -1,3 +1,5 @@
+from pathlib import Path, PureWindowsPath
+
 from pyfpa.memory.retrieval import (
     build_context_pack,
     build_memory_index,
@@ -50,6 +52,23 @@ def test_memory_index_round_trip_and_context_pack(tmp_path):
     assert loaded == index
     assert "# Task Memory Pack" in pack
     assert "`business-profile.md`" in pack
+
+
+def test_memory_index_paths_are_posix_when_os_uses_backslashes(tmp_path, monkeypatch):
+    (tmp_path / "corrections").mkdir()
+    (tmp_path / "corrections" / "cash.md").write_text("Cash collections lag.\n")
+
+    real_relative_to = Path.relative_to
+
+    def relative_to_windows(self, *other):
+        return PureWindowsPath(*real_relative_to(self, *other).parts)
+
+    monkeypatch.setattr(Path, "relative_to", relative_to_windows)
+
+    index = build_memory_index(tmp_path)
+
+    assert [entry.path for entry in index.entries] == ["corrections/cash.md"]
+    assert all("\\" not in entry.path for entry in index.entries)
 
 
 def test_generated_index_does_not_index_itself(tmp_path):
