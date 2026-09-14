@@ -62,7 +62,7 @@ def build_memory_index(workspace: str | Path) -> MemoryIndex:
         ):
             continue
         text = path.read_text()
-        relative = str(path.relative_to(workspace))
+        relative = path.relative_to(workspace).as_posix()
         entries.append(MemoryEntry(
             path=relative,
             category=_category(path, workspace),
