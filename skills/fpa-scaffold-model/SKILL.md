@@ -25,7 +25,8 @@ Turn a company's financials into a runnable `pyfpa` config. Read the business pr
    - debt → `debt[]` (`term_loan` with `monthly_principal`, or interest-only `loc`)
    - balance-sheet rhythm → `working_capital(dso_days, dpo_days, dio_days)` and `opening_balances`
 3. **Write** the company model and config under `models/generated/`. Validate
-   config with `pyfpa.load_config(path)`, which raises on any bad field.
+   config with `pyfpa.load_config(path)`. It rejects schema violations, including
+   unrecognised keys; valid omitted optional fields use their schema defaults.
 4. **Create a runnable command** such as
    `python3 models/generated/run_forecast.py`. Keep the runner thin and make its
    output locations explicit.

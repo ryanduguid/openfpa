@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 from pathlib import Path
 from typing import Literal
 
@@ -86,19 +87,20 @@ def evaluate_challenger(
     for metric in objective.metrics:
         champion = champion_metrics[metric.name]
         challenger = challenger_metrics[metric.name]
+        if not (math.isfinite(champion) and math.isfinite(challenger)):
+            raise ValueError(f"metric {metric.name!r} values must be finite")
         if champion == 0:
-            if challenger == 0:
-                raw_improvement = 0.0
-            elif metric.direction == "lower":
-                raw_improvement = -1.0
-            else:
-                raw_improvement = 1.0
+            # Relative change is undefined at zero; retain the direction of the move.
+            change = challenger if metric.direction == "higher" else -challenger
+            raw_improvement = 0.0 if change == 0 else (1.0 if change > 0 else -1.0)
         else:
             denominator = abs(champion)
             if metric.direction == "lower":
                 raw_improvement = (champion - challenger) / denominator
             else:
                 raw_improvement = (challenger - champion) / denominator
+        if not math.isfinite(raw_improvement):
+            raise ValueError(f"metric {metric.name!r} improvement must be finite")
         # The guard inspects the RAW improvement: the clamp below bounds the
         # score, but must not launder a catastrophic single-metric regression
         # into a passable aggregate.
