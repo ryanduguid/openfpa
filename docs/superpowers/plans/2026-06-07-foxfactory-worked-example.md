@@ -914,7 +914,7 @@ git commit -m "feat: Fox Factory segment + consolidated + divestiture config"
 - Create: `examples/foxfactory/.fpa/business-profile.md`
 - Create: `examples/foxfactory/skills/generated/segment-rollup/SKILL.md`
 
-- [ ] **Step 1: Write `business-profile.md`** following the `fpa-learn-business` contract (entity structure, the three segments + what each sells, revenue model/channels, cost drivers, seasonality, working-capital rhythm, financing incl. the Marucci-related debt, and the quirks: the 2022 peak → 2024 trough cycle, the inventory correction, the mid-2023 Marucci acquisition). Ground every claim in the pulled data / filings.
+- [ ] **Step 1: Write `business-profile.md`** following the `fpa-learn-business` contract (entity structure, the three segments + what each sells, revenue model/channels, cost drivers, seasonality, working-capital rhythm, financing incl. the Marucci-related debt, and the quirks: the 2022 peak → 2024 trough cycle, the inventory correction, the [14 November 2023 Marucci acquisition](https://www.sec.gov/Archives/edgar/data/1424929/000142492924000006/R97.htm)). Ground every claim in the pulled data / filings.
 
 - [ ] **Step 2: Write the generated skill** `skills/generated/segment-rollup/SKILL.md` with YAML frontmatter (`name: segment-rollup`, `description: ...`) documenting how to roll segment P&Ls into a consolidated model using `pyfpa.segment_pnl` / `roll_up_segments` / `segments_to_channels`, and **citing the profile facts** that justify it (Fox reports three segments; consolidated-only working capital). This is the self-extension artifact.
 
