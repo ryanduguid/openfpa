@@ -7,9 +7,9 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 
 
 class _ConfigModel(BaseModel):
-    """Reject unrecognised keys instead of silently using optional defaults."""
+    """Reject unrecognised keys and non-finite numeric inputs."""
 
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
 
 class Channel(_ConfigModel):
