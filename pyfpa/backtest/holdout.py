@@ -23,10 +23,16 @@ def holdout_backtest(
     predicted vs the held-out actuals. The business-specific `build_cfg_fn`
     (fit actuals -> a config that forecasts the holdout window) is supplied by the
     caller; this harness only owns the split and the scoring. Nothing is scored on
-    data it was fit on."""
+    data it was fit on.
+
+    `holdout` must be positive and leave at least one period for fitting.
+    Periods follow the iteration order of `actuals_by_period`.
+    """
     periods = list(actuals_by_period)
     if len(periods) <= holdout:
         raise ValueError(f"need more than {holdout} periods, got {len(periods)}")
+    if holdout < 1:
+        raise ValueError("holdout must be at least 1")
     fit_periods = periods[:-holdout]
     holdout_periods = periods[-holdout:]
 
