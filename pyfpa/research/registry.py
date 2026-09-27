@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 import yaml
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from pyfpa.research.epochs import ResearchEpoch, evaluate_challenger
 
@@ -13,6 +13,9 @@ if TYPE_CHECKING:
 
 
 class ModelVersion(BaseModel):
+    # Allow model_id on older supported Pydantic versions.
+    model_config = ConfigDict(protected_namespaces=("model_validate", "model_dump"))
+
     model_id: str
     created: str
     artifact: str
