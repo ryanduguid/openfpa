@@ -389,6 +389,14 @@ runway = pyfpa.runway_summary(weekly)
 print(pyfpa.to_briefing_md(monthly, title="My Company", runway=runway))
 ```
 
+Monthly and weekly configuration validation requires finite financial inputs,
+including each seasonal weight. `NaN` and positive or negative infinity are
+rejected when loading YAML or validating new configurations. Existing sign
+rules still apply, including support for finite negative opening cash and
+operating-cost credits. Finite inputs can still overflow during calculation;
+this validation does not check later model mutations or bypasses such as
+Pydantic's `model_construct()`.
+
 The base kernel includes:
 
 - monthly P&L and indirect cash-flow modeling;
