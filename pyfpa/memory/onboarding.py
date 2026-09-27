@@ -2,12 +2,15 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from pyfpa.memory.intake import Intake, intake_ready
 
 
 class ArchitectureProposal(BaseModel):
+    # Allow model_components on older supported Pydantic versions.
+    model_config = ConfigDict(protected_namespaces=("model_validate", "model_dump"))
+
     summary: str
     connectors: list[str] = Field(default_factory=list)
     model_components: list[str] = Field(default_factory=list)

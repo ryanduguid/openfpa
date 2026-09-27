@@ -48,6 +48,8 @@ def test_architecture_proposal_is_an_explicit_human_gate():
     assert "Human approval required before scaffolding" in proposal
     assert "## Proposed Connectors" in proposal
     assert "QuickBooks P&L and balance sheet export" in proposal
+    assert "Channel revenue model" in proposal
+    assert "13-week cash model" in proposal
     assert "- [ ] Approved to scaffold" in proposal
 
 
