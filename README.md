@@ -1,5 +1,10 @@
 # openfpa
 
+**Fork status**
+
+[![Fork code quality](https://app.codacy.com/project/badge/Grade/6ac3ee4907264839a1d5537d21bb5152?branch=main)](https://app.codacy.com/gh/ryanduguid/openfpa/dashboard)
+[![Fork CI](https://github.com/ryanduguid/openfpa/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ryanduguid/openfpa/actions/workflows/ci.yml)
+
 [![CI](https://github.com/JeffBrines/openfpa/actions/workflows/ci.yml/badge.svg)](https://github.com/JeffBrines/openfpa/actions/workflows/ci.yml)
 
 **openfpa is an agent-native FP&A workbench.** It gives an AI coding agent a
