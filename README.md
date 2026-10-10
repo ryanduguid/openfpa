@@ -34,6 +34,16 @@ inside it. The human points the agent toward the relevant data and business
 context. The agent uses the toolbelt to learn the company, ask the right
 questions, build the right FP&A system, and improve it as actual outcomes arrive.
 
+On this page:
+
+- [Current quick start](#current-quick-start)
+- [Runnable examples](#runnable-examples)
+- [Agent toolbelt CLI](#agent-toolbelt-cli)
+- [The company workspace](#the-company-workspace)
+- [The research loop](#the-research-loop)
+- [Python kernel](#python-kernel)
+- [Development](#development)
+
 ## Why this exists
 
 Traditional FP&A software asks a company to configure itself inside a fixed
