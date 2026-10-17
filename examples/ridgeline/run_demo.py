@@ -54,7 +54,7 @@ def run_demo(output_dir: str | Path) -> dict:
 
 if __name__ == "__main__":
     figures = run_demo(_REPO_ROOT / "docs/demo")
-    print(f"Wrote briefing.md + forecast.xlsx to docs/demo/")
-    print(f"Wrote model.xlsx (live-formula workbook) to docs/demo/")
+    print("Wrote briefing.md + forecast.xlsx to docs/demo/")
+    print("Wrote model.xlsx (live-formula workbook) to docs/demo/")
     for key, value in figures.items():
         print(f"  {key}: {value}")

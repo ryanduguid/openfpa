@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import sys
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any

@@ -1,4 +1,3 @@
-from pathlib import Path
 
 from pyfpa.config.schemas import EntityConfig
 from pyfpa.models.cashflow import cashflow_from_config

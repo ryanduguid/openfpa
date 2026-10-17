@@ -1,8 +1,7 @@
-import pandas as pd
 import pytest
 from pyfpa.config.schemas import EntityConfig
 from pyfpa.models.cashflow import cashflow_from_config
-from pyfpa.backtest.snapshot import Snapshot, snapshot_forecast, save_snapshot, load_snapshot
+from pyfpa.backtest.snapshot import snapshot_forecast, save_snapshot, load_snapshot
 from pyfpa.backtest.score import score_forecast
 
 

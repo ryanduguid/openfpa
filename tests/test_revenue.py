@@ -1,4 +1,3 @@
-import pandas as pd
 from pyfpa.models.revenue import revenue_from_config
 
 
