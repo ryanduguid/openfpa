@@ -59,7 +59,6 @@ def verify_workbook(
 
     # The formulas library preserves the original filename casing for the book
     # part and uppercases the sheet name. Confirmed format: "'[m.xlsx]MODEL'!B3"
-    book_tag = f"[{path.name}]MODEL"
 
     failures: list[str] = []
     max_dev = 0.0

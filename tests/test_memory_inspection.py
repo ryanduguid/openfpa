@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from pathlib import Path
 
 from pyfpa.memory.inspection import inspect_data_files, InspectionResult
 

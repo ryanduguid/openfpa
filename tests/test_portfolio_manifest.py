@@ -1,5 +1,5 @@
 import pytest
-from pyfpa.portfolio.manifest import ClientRef, Portfolio, load_portfolio, clients_of_type
+from pyfpa.portfolio.manifest import ClientRef, load_portfolio, clients_of_type
 
 
 def test_load_portfolio_missing_raises():
