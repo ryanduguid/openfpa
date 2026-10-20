@@ -2,10 +2,10 @@
 
 **Fork status**
 
-[![Fork code quality](https://app.codacy.com/project/badge/Grade/6ac3ee4907264839a1d5537d21bb5152?branch=main)](https://app.codacy.com/gh/ryanduguid/openfpa/dashboard)
-[![Fork CI](https://github.com/ryanduguid/openfpa/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ryanduguid/openfpa/actions/workflows/ci.yml)
+[![Fork code quality](https://img.shields.io/codacy/grade/6ac3ee4907264839a1d5537d21bb5152/main?style=flat&labelColor=000000)](https://app.codacy.com/gh/ryanduguid/openfpa/dashboard)
+[![Fork CI](https://img.shields.io/github/actions/workflow/status/ryanduguid/openfpa/ci.yml?branch=main&label=CI&style=flat&labelColor=000000)](https://github.com/ryanduguid/openfpa/actions/workflows/ci.yml)
 
-[![CI](https://github.com/JeffBrines/openfpa/actions/workflows/ci.yml/badge.svg)](https://github.com/JeffBrines/openfpa/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/JeffBrines/openfpa/ci.yml?label=CI&style=flat&labelColor=000000)](https://github.com/JeffBrines/openfpa/actions/workflows/ci.yml)
 
 **openfpa is an agent-native FP&A workbench.** It gives an AI coding agent a
 tested finance kernel, an operating contract, durable company memory, and a
