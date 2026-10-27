@@ -9,7 +9,7 @@ class WeeklyFlow(BaseModel):
     """A scheduled cash flow. `amount` is a magnitude (>=0); whether it is a
     receipt or disbursement is determined by which list it lives in."""
 
-    model_config = ConfigDict(allow_inf_nan=False)
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
     name: str
     amount: float = Field(ge=0)
@@ -25,7 +25,7 @@ class WeeklyFlow(BaseModel):
 
 
 class Cash13Config(BaseModel):
-    model_config = ConfigDict(allow_inf_nan=False)
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
 
     opening_cash: float
     weeks: int = Field(default=13, ge=1, le=52)

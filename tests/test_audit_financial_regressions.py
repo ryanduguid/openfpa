@@ -8,11 +8,13 @@ from pydantic import ValidationError
 
 from pyfpa import cashflow_from_config, load_config
 from pyfpa.analysis.divestiture import Carveout, divest
+from pyfpa.io.loaders import load_cash13_config
 from pyfpa.research.epochs import EpochEvaluation, ResearchEpoch, evaluate_challenger
 from pyfpa.research.objective import MetricObjective, ResearchObjective
 from pyfpa.research.registry import ModelRegistry, promote_challenger
 
 CONFIG = Path(__file__).resolve().parents[1] / "examples/ridgeline/config.yaml"
+CASH13 = CONFIG.with_name("cash13.yaml")
 
 
 @pytest.mark.parametrize("sale_month", [0, 6, 12])
@@ -40,6 +42,26 @@ def test_unknown_configuration_fields_are_rejected(tmp_path, field):
     path.write_text(yaml.safe_dump(values), encoding="utf-8")
     with pytest.raises(ValidationError, match="misspelt_field"):
         load_config(path)
+
+
+@pytest.mark.parametrize("field", [None, "receipts", "disbursements"])
+def test_unknown_weekly_cash_fields_are_rejected(tmp_path, field):
+    values = load_cash13_config(CASH13).model_dump()
+    target = values if field is None else values[field][0]
+    target["misspelt_field"] = 1
+    path = tmp_path / "cash13.yaml"
+    path.write_text(yaml.safe_dump(values), encoding="utf-8")
+    with pytest.raises(ValidationError, match="misspelt_field"):
+        load_cash13_config(path)
+
+
+def test_misspelt_disbursements_are_refused_not_dropped(tmp_path):
+    values = yaml.safe_load(CASH13.read_text(encoding="utf-8"))
+    values["disbursments"] = values.pop("disbursements")
+    path = tmp_path / "cash13.yaml"
+    path.write_text(yaml.safe_dump(values), encoding="utf-8")
+    with pytest.raises(ValidationError, match="disbursments"):
+        load_cash13_config(path)
 
 
 def test_correct_growth_applies_and_misspelt_growth_is_refused(tmp_path):

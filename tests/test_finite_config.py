@@ -154,15 +154,11 @@ def test_finite_negative_inputs_and_seasonal_zero_remain_valid(monthly_data):
     }
 
 
-def test_finite_weekly_inputs_preserve_trajectory_and_extra_keys(tmp_path, weekly_data):
+def test_finite_weekly_inputs_preserve_trajectory(tmp_path, weekly_data):
     weekly_data["opening_cash"] = -10
-    weekly_data["note"] = "ignored"
-    weekly_data["receipts"][0]["note"] = "ignored"
     config_path = tmp_path / "weekly.yaml"
     config_path.write_text(yaml.safe_dump(weekly_data), encoding="utf-8")
     cfg = load_cash13_config(config_path)
     forecast = cash13_forecast(cfg)
     assert forecast["ending_cash"].tolist() == [10, 10]
     assert runway_summary(forecast) == {"min_cash": 10, "min_week": 1, "first_negative_week": None}
-    assert "note" not in cfg.model_dump()
-    assert "note" not in cfg.receipts[0].model_dump()
