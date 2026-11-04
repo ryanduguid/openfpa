@@ -10,6 +10,8 @@
 
 </div>
 
+ryanduguid/openfpa is [Ryan Duguid](https://duguid.com.au/)'s fork of [JeffBrines/openfpa](https://github.com/JeffBrines/openfpa), adding rejection of invalid scoring, non-finite forecast inputs and non-positive backtest holdouts, plus valid JSON CLI errors, for FP&A users of the workbench who need those checks.
+
 GitHub Actions is off for this fork, so `ci.yml` does not run on GitHub. Run its steps locally before merging.
 
 **openfpa is an agent-native FP&A workbench.** It gives an AI coding agent a
